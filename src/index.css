@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.selected-city {
+  background-color: #4d5351; /* Customize the background color for the selected city */
+  color: white; /* Customize the text color for the selected city */
+  font-weight: bold;
+}
+
+.chart-container {
+  width: 100%; 
+  max-width: 100%;
+}
+@media (max-width: 768px) {
+  .chart-container {
+    width: 100%;
+  }
+}
