@@ -1,11 +1,11 @@
 import  { useEffect, useState } from "react";
 import {LineChart,Line,XAxis,YAxis,CartesianGrid,Tooltip, Legend, ResponsiveContainer } from "recharts";
-import useWindowWidth from "../../hooks/Window";
-import UseTimeFormatter from "../../hooks/useTimeFormatter";
+import UseWindowWidth from "../../hooks/Window";
+import UseTimeFormatter from "../../hooks/UseTimeFormatter";
 const WIndChart = ({Temprature}) => {
   const formatTimeEpoch = UseTimeFormatter();
 
-  const windowWidth = useWindowWidth(); 
+  const windowWidth = UseWindowWidth(); 
 
       const [WindSpeed, setWindSpeed]= useState([])
       

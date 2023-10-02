@@ -1,19 +1,15 @@
 
 import { useEffect, useState } from "react";
 import {AreaChart,XAxis,YAxis,CartesianGrid, Tooltip,Area,ResponsiveContainer,Line} from "recharts"
-import useTimeFormatter from '../../hooks/useTimeFormatter';
+import UseTimeFormatter from '../../hooks/UseTimeFormatter';
 const PressureChart = ({pressureData}) => {
-  const formatTimeEpoch = useTimeFormatter();
+  const formatTimeEpoch = UseTimeFormatter();
 const [ pressure_mb ,setpressure_mb]= useState(null)
 const AllDay_Data = pressureData?.forecast?.forecastday[0]?.hour;
 
-
-
-
-
 useEffect(() => {
   const PressureData = AllDay_Data?.map((data) => ({
-    time_epoch: data.time_epoch, // Keep the original time_epoch
+    time_epoch: data.time_epoch, //  original time_epoch
     pressure_mb: data.pressure_mb,
     pressure_in:data.pressure_in
   }));

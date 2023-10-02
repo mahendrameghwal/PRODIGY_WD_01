@@ -1,13 +1,13 @@
 import  { useEffect, useState } from "react";
 import {LineChart,Line,XAxis,YAxis,CartesianGrid,Tooltip, Legend, ResponsiveContainer } from "recharts";
-import useWindowWidth from "../../hooks/Window";
-import useTimeFormatter from '../../hooks/UseTimeFormatter';
+import UseWindowWidth from "../../hooks/Window";
+import UseTimeFormatter from '../../hooks/UseTimeFormatter';
 
 
 const TempratureData = ({Temprature}) => {
-  const formatTimeEpoch = useTimeFormatter();
+  const formatTimeEpoch = UseTimeFormatter();
 
-      const windowWidth = useWindowWidth(); 
+      const windowWidth = UseWindowWidth(); 
     const [formattedData, setFormattedData] = useState([]);
 
 
@@ -16,8 +16,8 @@ const TempratureData = ({Temprature}) => {
 
     useEffect(() => {
         const formatted = Temprature?.map((item) => ({
-          time_epoch: item.time_epoch, // Keep the original time_epoch
-          time_formatted: formatTimeEpoch(item.time_epoch), // Add formatted time
+          time_epoch: item.time_epoch, // original time_epoch
+          time_formatted: formatTimeEpoch(item.time_epoch), //  formatted time
           temp_c: item.temp_c
         }));
         setFormattedData(formatted);

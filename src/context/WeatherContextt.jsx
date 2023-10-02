@@ -8,16 +8,15 @@ import SECRET from "../SECRET";
 const WeatherContext = createContext();
 
 
-// Create a custom hook to use the context
+// Create a custom hook 
 export const useWeather = () => {
-  
   return useContext(WeatherContext);
 };
 
 
 
 
-// Create a context provider component
+// Create a context provider
 export const WeatherProvider = ({ children }) => {
    const { SuggestionVlaue } = UseSuggestionValue();
    
@@ -72,6 +71,7 @@ export const WeatherProvider = ({ children }) => {
   }, [selectedCity, updateSelectedCity, SuggestionVlaue, UseSuggestionValue]);
 
   // Define the context value
+  
   const contextValue = {
     weatherData,
   };
