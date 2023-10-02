@@ -1,8 +1,7 @@
 import  { useEffect, useState } from "react";
 import {LineChart,Line,XAxis,YAxis,CartesianGrid,Tooltip, Legend, ResponsiveContainer } from "recharts";
 import useWindowWidth from "../../hooks/Window";
-import useTimeFormatter from '../../hooks/useTimeFormatter';
-
+import useTimeFormatter from '../../hooks/UseTimeFormatter';
 
 
 const TempratureData = ({Temprature}) => {
