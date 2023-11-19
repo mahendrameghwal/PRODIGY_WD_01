@@ -6,6 +6,7 @@ export const UseSuggestionValue = () => {
   return useContext(SearchContext);
 };
 
+// eslint-disable-next-line react/prop-types
 export const SeachProvider = ({ children }) => {
   const [SuggestionVlaue, setSuggestionVlaue] = useState("");
 

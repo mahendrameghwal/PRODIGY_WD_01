@@ -21,7 +21,9 @@ const SeachContainer = () => {
 
     const handleSuggestionClick = (cityName) => {
     
-      setSuggest(cityName);
+      if (cityName) {
+        setSuggest(cityName);
+      }
       setSuggestionUsed(true);
       setInputValue(cityName); 
     
@@ -30,17 +32,15 @@ const SeachContainer = () => {
  
 
     const handleBodyClick = (e) => {
-      // Check if the click was inside the suggestion container or not
+   
       if (!e.target.classList.contains("suggestion-item")) {
-        setSuggest(""); // Clear the suggestion
+        setSuggest(""); // Clear suggestion
         setSuggestionUsed(false);
       }
     };
   
     useEffect(() => {
-     
     
-        // Remove the event listener when the component unmounts
         document.body.removeEventListener("click", handleBodyClick);
     
     }, []);

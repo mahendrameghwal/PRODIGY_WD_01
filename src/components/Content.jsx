@@ -8,7 +8,7 @@ import Table from "./Table";
 import SunriseChart from "../chart/Temprature/SunriseChart";
 import PressureChart from "../chart/Temprature/PressureChart";
 import PalaceInfo from "./PalaceInfo";
-
+import { GiPerpendicularRings } from "react-icons/gi";
 import {WiSunrise} from "react-icons/wi"
 import SeachContainer from "./SeachContainer";
 
@@ -68,19 +68,13 @@ const Content = ({Weatherdata}) => {
      </div>
      <div className="w-full mb-4 shadow-md  dark:text-white p-1  dark:bg-slate-900">
      <div className="flex gap-x-2 my-2">
-     <img className="h-5" src="https://cdn.weatherapi.com/weather/64x64/night/143.png" alt="" /> 
-     <p>Pressure chart</p>
+     
+     <span>Pressure </span><GiPerpendicularRings size={20}/> 
      
      </div>
      <PressureChart pressureData={Weatherdata.data}/>
      </div>
-     <div className="w-full mb-4 shadow-md  dark:text-white p-1  dark:bg-slate-900">
-     <div className="flex gap-x-2 my-2">
-     <img className="h-5" src="https://cdn.weatherapi.com/weather/64x64/night/143.png" alt="" /> 
-     <p>temprature</p>
-     </div>
-     <span className="text-2xl  ">13 °C</span>
-     </div>
+     
      </div>
       </div>
 
