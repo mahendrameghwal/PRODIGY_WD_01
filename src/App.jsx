@@ -8,7 +8,7 @@ const App = () => {
   
 
 
-  console.log(import.meta.env);
+
   return (
   <Routes>
     
