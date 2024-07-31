@@ -15,7 +15,7 @@ import SeachContainer from "./SeachContainer";
 const Content = ({Weatherdata}) => {
 
 
-
+console.log(Weatherdata?.data);
 
   return (
   Weatherdata &&
@@ -32,7 +32,7 @@ const Content = ({Weatherdata}) => {
      <div className="w-full">
      <div className="rounded-md shadow-md max-lg:w-full my-3 max-md:my-2 max-md:px-5 dark:text-white p-2  dark:bg-slate-900">
      <div className="flex gap-x-2 my-2"><p className="flex items-center gap-x-2">Temprature <TiWeatherSunny/></p></div>
-     <TempratureData Temprature={Weatherdata?.data?.forecast.forecastday[0].hour}/>
+     <TempratureData Temprature={Weatherdata?.data?.forecast?.forecastday[0]?.hour}/>
 
      </div>
    
@@ -41,7 +41,7 @@ const Content = ({Weatherdata}) => {
      <div className="rounded-md shadow-md max-lg:w-full my-3 px-8 max-md:my-2 max-md:px-5 dark:text-white p-2 dark:bg-slate-900">
      <div className="flex gap-x-2 my-2"><p className="flex items-center gap-x-2">Wind speed <SiTailwindcss/></p></div>
   
-     <WIndChart Temprature={Weatherdata?.data?.forecast?.forecastday[0].hour} />
+     <WIndChart Temprature={Weatherdata?.data?.forecast?.forecastday[0]?.hour} />
 
      </div>
    
@@ -50,7 +50,7 @@ const Content = ({Weatherdata}) => {
 
 
      <div className="w-full gap-2 my-4">
-     <Table forecastDayData={Weatherdata?.data.forecast.forecastday}/>
+     <Table forecastDayData={Weatherdata?.data?.forecast?.forecastday}/>
 
    
      </div>
@@ -64,7 +64,8 @@ const Content = ({Weatherdata}) => {
      
      <span>Sunrise & Sunset </span><WiSunrise size={20}/> 
      </div>
-     <SunriseChart Sunsetrise={Weatherdata.data.forecast.forecastday}/>
+     
+     <SunriseChart Sunsetrise={Weatherdata?.data?.forecast?.forecastday}/>
      </div>
      <div className="w-full mb-4 shadow-md  dark:text-white p-1  dark:bg-slate-900">
      <div className="flex gap-x-2 my-2">
@@ -72,7 +73,7 @@ const Content = ({Weatherdata}) => {
      <span>Pressure </span><GiPerpendicularRings size={20}/> 
      
      </div>
-     <PressureChart pressureData={Weatherdata.data}/>
+     <PressureChart pressureData={Weatherdata?.data}/>
      </div>
      
      </div>

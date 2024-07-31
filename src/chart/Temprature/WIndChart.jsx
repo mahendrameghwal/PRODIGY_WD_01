@@ -25,11 +25,16 @@ const WIndChart = ({Temprature}) => {
     <ResponsiveContainer  width="100%" height={220} >
     <LineChart data={WindSpeed}  >
     <CartesianGrid strokeDasharray="2 2"/>
-    <XAxis stroke="#97969e" strokeOpacity={10}
+    <XAxis 
+    stroke="#888"
+    tick={{ fontSize: 12 }}
+
       dataKey="time_epoch"
       tickFormatter={(time_epoch) => formatTimeEpoch(time_epoch)}
     />
-    <YAxis />
+    <YAxis stroke="#888"
+    tick={{ fontSize: 12 }}
+    tickFormatter={(value) => `${value}km/h`}  />
     <Tooltip />
     <Legend />
     <Line type="natural" dataKey="wind_kph" name="wind (km/h)"  stroke="#4f48db"

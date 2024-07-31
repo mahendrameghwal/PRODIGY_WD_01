@@ -7,6 +7,7 @@ import SECRET from "../SECRET";
 SECRET
 const Home = () => {
   const { weatherData } = useWeather();
+ 
   return (
     <div className="dark:bg-slate-950">
     

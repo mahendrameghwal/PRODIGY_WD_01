@@ -10,7 +10,7 @@ const TempratureData = ({Temprature}) => {
       const windowWidth = UseWindowWidth(); 
     const [formattedData, setFormattedData] = useState([]);
 
-
+console.log(Temprature);
 
  
 
@@ -22,7 +22,7 @@ const TempratureData = ({Temprature}) => {
         }));
         setFormattedData(formatted);
       
-      }, [Temprature ,windowWidth]);
+      }, [Temprature ,formatTimeEpoch,windowWidth]);
 
 
       
@@ -30,11 +30,16 @@ const TempratureData = ({Temprature}) => {
     <ResponsiveContainer width="100%" height={210} >
     <LineChart  data={formattedData}    >
     <CartesianGrid strokeDasharray="2 2" />
-    <XAxis stroke="#97969e"
+    <XAxis 
+
+    stroke="#888"
+    tick={{ fontSize: 12 }}
       dataKey="time_epoch"
       tickFormatter={(time_epoch) => formatTimeEpoch(time_epoch)}
     />
-    <YAxis />
+    <YAxis  stroke="#888"
+    tick={{ fontSize: 12 }}
+    tickFormatter={(value) => `${value}°C`} />
     <Tooltip />
     <Legend />
     <Line type="natural" dataKey="temp_c" name="Temperature (°C)"  stroke="#4f48db"

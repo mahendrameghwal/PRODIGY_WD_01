@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import {AreaChart,XAxis,YAxis,CartesianGrid, Tooltip,Area,ResponsiveContainer,Line} from "recharts"
+import {AreaChart,XAxis,YAxis,CartesianGrid, Tooltip,Area,ResponsiveContainer,Line, Legend, Bar, ComposedChart} from "recharts"
 import UseTimeFormatter from '../../hooks/UseTimeFormatter';
 const PressureChart = ({pressureData}) => {
   const formatTimeEpoch = UseTimeFormatter();
@@ -20,30 +20,63 @@ useEffect(() => {
 
 
    return(
-    <ResponsiveContainer width="100%" height={210}>                  
-  <AreaChart  data={pressure_mb}
-  margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-  <defs>
-    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-      <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
-    </linearGradient>
-    <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-      <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
-    </linearGradient>
-  </defs>
-  <XAxis stroke="#97969 e"
-      dataKey="time_epoch"
-      tickFormatter={(time_epoch) => formatTimeEpoch(time_epoch)}
-    />
-  <YAxis  />
-  <CartesianGrid strokeDasharray="3 3" />
-  <Tooltip  />
-  <Area type="natural"  dataKey="pressure_mb"  name="Pressure (Millibars)" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-   <Area ttype="natural" dataKey="pressure_in" name="Pressure (Inches of Mercury)" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
-   
-  </AreaChart>
+    <ResponsiveContainer width="100%" height={300}>
+    <ComposedChart
+      data={pressure_mb}
+    
+    >
+      <defs>
+        <linearGradient id="colorPressureMb" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
+          <stop offset="95%" stopColor="#8884d8" stopOpacity={0.2}/>
+        </linearGradient>
+        <linearGradient id="colorPressureIn" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
+          <stop offset="95%" stopColor="#82ca9d" stopOpacity={0.2}/>
+        </linearGradient>
+      </defs>
+      <XAxis 
+        dataKey="time_epoch"
+        tickFormatter={(time_epoch) => formatTimeEpoch(time_epoch)}
+        stroke="#666"
+        tick={{ fontSize: 12 }}
+      />
+      <YAxis 
+        yAxisId="left" 
+        stroke="#8884d8"
+        tick={{ fontSize: 12 }}
+        label={{ value: 'Pressure (mb)', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
+      />
+      <YAxis 
+        yAxisId="right" 
+        orientation="right" 
+        stroke="#82ca9d"
+        tick={{ fontSize: 12 }}
+        label={{ value: 'Pressure (in)', angle: 90, position: 'insideRight', style: { textAnchor: 'middle' } }}
+      />
+      <CartesianGrid strokeDasharray="3 3" stroke="#eee" />
+      <Tooltip 
+        contentStyle={{ backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '5px' }}
+        labelFormatter={(value) => `Time: ${formatTimeEpoch(value)}`}
+      />
+      <Legend wrapperStyle={{ paddingTop: 10 }} />
+      <Line 
+        yAxisId="left"
+        type="monotone"
+        dataKey="pressure_mb"
+        name="Pressure (Millibars)"
+        stroke="#8884d8"
+        strokeWidth={2}
+        dot={false}
+      />
+      <Bar 
+        yAxisId="right"
+        dataKey="pressure_in"
+        name="Pressure (Inches of Mercury)"
+        fill="url(#colorPressureIn)"
+        barSize={20}
+      />
+    </ComposedChart>
   </ResponsiveContainer>
    )
 }

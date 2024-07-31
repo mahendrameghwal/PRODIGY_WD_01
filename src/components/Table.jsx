@@ -21,42 +21,38 @@ const Table = ({forecastDayData}) => {
 
 
   return (
-    <table className="w-full border-collapse border dark:text-white dark:border-slate-100  dark:bg-slate-900 border-slate-500 table-auto">
-    <thead>
+    <table className="w-full border-collapse rounded-lg overflow-hidden shadow-lg dark:text-white dark:bg-slate-800 bg-white">
+    <thead className="bg-[#3432b8] text-white">
       <tr>
-        <th className="p-1 border border-slate-600">Next days </th>
-        <th className="p-1 border border-slate-600">Average temp.</th>
-        <th className="p-1 border border-slate-600">Temprature</th>
-        <th className="p-1 border border-slate-600">condition</th>
-
+        <th className="p-3 text-left">Next days</th>
+        <th className="p-3 text-center">Average temp.</th>
+        <th className="p-3 text-center">Temperature</th>
+        <th className="p-3 text-left">Condition</th>
       </tr>
     </thead>
     <tbody>
-
-{
-    forecastDayData?.map((item,i)=>{
-        const {date,day,astro}= forecastDayData[i];
-       return <tr key={i}>
-        <td className="p-2 border border-slate-600">{formatDate(date)}</td>
-        <td className="p-2 border text-center border-slate-600">{day.avgtemp_c} °c </td>
-        <td className="p-2 flex justify-around max-md:flex-col px-2 gap-x-3  text-center  max-md:mx-auto border border-slate-600">{day.mintemp_c}°c - {day.maxtemp_c}°c <img className="h-8 max-md:items-center max-md:h-7 object-contain " src={ day.condition.icon} alt={day?.condition.text}/></td>
-     
-        <th className="p-1  border border-slate-600">{day?.condition.text}</th>
-
-        </tr>
-
-
-
-       
-
-    })
-}
-
-
-
-
-
-
+      {forecastDayData?.map((item, i) => {
+        const { date, day } = item;
+        return (
+          <tr key={i} className="border-b dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition duration-150 ease-in-out">
+            <td className="p-3 font-medium">{formatDate(date)}</td>
+            <td className="p-3 text-center font-bold">{day.avgtemp_c}°C</td>
+            <td className="p-3">
+              <div className="flex items-center justify-center space-x-2">
+                <span className="text-blue-500">{day.mintemp_c}°C</span>
+                <span className="text-xs">to</span>
+                <span className="text-red-500">{day.maxtemp_c}°C</span>
+                <img 
+                  className="h-8 w-8 object-contain ml-2" 
+                  src={day.condition.icon} 
+                  alt={day?.condition.text}
+                />
+              </div>
+            </td>
+            <td className="p-3">{day?.condition.text}</td>
+          </tr>
+        );
+      })}
     </tbody>
   </table>
   )
