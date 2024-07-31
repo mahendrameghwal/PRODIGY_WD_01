@@ -78,16 +78,8 @@ const Content = ({Weatherdata}) => {
      
      </div>
       </div>
-
-      
-      
     </div>
-
-  
   </div>
-
-  
-
 </div>
   );
 };

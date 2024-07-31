@@ -2,7 +2,7 @@ import { useEffect, useState, useRef  } from "react";
 import Cities from "../CitiesData/Cities";
 import axios from "axios";
 import { UseSuggestionValue } from "../context/SearchContext";
-import SECRET from "../SECRET";
+
 
 
 const SeachContainer = () => {
@@ -46,11 +46,6 @@ const SeachContainer = () => {
     }, []);
 
 
-
-
-
-
-
     
       useEffect(() => {
        if (timeoutIdRef.current) {
@@ -59,7 +54,7 @@ const SeachContainer = () => {
        }
        
        timeoutIdRef.current = setTimeout(() => {
-           const apiUrl = `${SECRET?.BASE_URL}search.json?key=${SECRET?.API_KEY}&q=$${inputValue}`;
+           const apiUrl = `${import.meta.env.VITE_APP_BASE_URL}search.json?key=${import.meta.env?.VITE_API_KEY}&q=$${inputValue}`;
            axios.get(apiUrl)
              .then((response) => {
                setApiData(response.data);

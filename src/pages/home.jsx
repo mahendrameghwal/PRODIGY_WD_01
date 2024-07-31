@@ -3,8 +3,7 @@ import Sidebar from "../components/Sidebar";
 import Content from "../components/Content";
 import { useWeather } from "../context/WeatherContextt";
 import Loader from "../components/Loader";
-import SECRET from "../SECRET";
-SECRET
+
 const Home = () => {
   const { weatherData } = useWeather();
  

@@ -2,7 +2,7 @@ import  { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import CityContext from "./CityContext";
 import { UseSuggestionValue } from "./SearchContext";
-import SECRET from "../SECRET";
+
 
 // Create a context
 const WeatherContext = createContext();
@@ -46,7 +46,7 @@ export const WeatherProvider = ({ children }) => {
 
 
 
-      let Forecast_URL = `${SECRET?.BASE_URL}forecast.json?key=${SECRET?.API_KEY}&q=${selectedLocation }&days=5&aqi=yes`;
+      let Forecast_URL = `${import.meta.env?.VITE_APP_BASE_URL}forecast.json?key=${import.meta.env?.VITE_API_KEY}&q=${selectedLocation }&days=5&aqi=yes`;
       try {
         const response = await axios.get(Forecast_URL);
   
