@@ -15,7 +15,7 @@ import SeachContainer from "./SeachContainer";
 const Content = ({Weatherdata}) => {
 
 
-console.log(Weatherdata?.data);
+
 
   return (
   Weatherdata &&

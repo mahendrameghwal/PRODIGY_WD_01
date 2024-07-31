@@ -10,9 +10,6 @@ const TempratureData = ({Temprature}) => {
       const windowWidth = UseWindowWidth(); 
     const [formattedData, setFormattedData] = useState([]);
 
-console.log(Temprature);
-
- 
 
     useEffect(() => {
         const formatted = Temprature?.map((item) => ({
